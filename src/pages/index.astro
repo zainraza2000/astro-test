@@ -1,0 +1,16 @@
+---
+import Clients from "../components/Clients.tsx";
+import type { Client } from "../types.ts";
+import "../index.css";
+const response = await fetch(`${import.meta.env.PUBLIC_BASE_URL}/clients`);
+const clients: Client[] = await response.json();
+---
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <Clients client:load clients={clients} />
+  </body>
+</html>
