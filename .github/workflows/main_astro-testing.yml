@@ -11,20 +11,10 @@ on:
 
 jobs:
   build:
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Create .env.runtime file
-        env:
-          ENV_FILE: ${{ secrets.ENV_FILE }}
-        run: |
-          echo "$ENV_FILE" > .env.runtime
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
@@ -34,7 +24,7 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          export $(cat .env.runtime) && npm run build --if-present
+          npm run build --if-present
           npm run test --if-present
 
       - name: Zip artifact for deployment
@@ -52,7 +42,7 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
+    
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
@@ -61,7 +51,7 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
+      
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -69,4 +59,4 @@ jobs:
           app-name: 'astro-testing'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D1E0011D7D04EF580F20BC6708FF751 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23FE5282463E48A7938583F3A179DF81 }}
