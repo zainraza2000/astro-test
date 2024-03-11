@@ -69,4 +69,4 @@ jobs:
           app-name: 'astro-testing'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D1E0011D7D04EF580F20BC6708FF751 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23FE5282463E48A7938583F3A179DF81 }}
