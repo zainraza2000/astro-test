@@ -24,7 +24,7 @@ jobs:
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
         run: |
-          echo '$ENV_FILE' > .env.runtime
+          echo "$ENV_FILE" > .env.runtime
 
       - name: Set up Node.js version
         uses: actions/setup-node@v3
