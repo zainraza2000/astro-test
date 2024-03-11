@@ -20,16 +20,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-
       - name: Create .env.runtime file
         env:
           ENV_FILE: ${{ secrets.ENV_FILE }}
         run: |
-          echo "$ENV_FILE" > .env.runtime
+          echo '$ENV_FILE' > .env.runtime
+
+      - name: Set up Node.js version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
 
       - name: npm install, build, and test
         run: |
