@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "HOST=0.0.0.0 node ./dist/server/entry.mjs",
-    "build": "export $(cat .env.runtime) && astro build",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
