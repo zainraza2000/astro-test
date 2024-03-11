@@ -21,6 +21,12 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: Create .env.runtime file
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
+        run: |
+          echo "$ENV_FILE" > .env.runtime
+
       - name: npm install, build, and test
         run: |
           npm install

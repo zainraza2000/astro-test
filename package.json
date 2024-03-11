@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "HOST=0.0.0.0 node ./dist/server/entry.mjs",
-    "build": "export (PUBLIC_BASE_URL=${{ secrets.PUBLIC_BASE_URL }} PUBLIC_COMPANY_LINK=${{ secrets.PUBLIC_COMPANY_LINK }} PUBLIC_TICKET_LINK=${{ secrets.PUBLIC_TICKET_LINK }} PUBLIC_TOTALS_PASSWORD=${{ secrets.PUBLIC_TOTALS_PASSWORD }}) && astro build",
+    "build": "export $(cat .env.runtime) && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
